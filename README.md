@@ -1,5 +1,5 @@
 
-# jaaaco/webdav-uid-gid
+# wietrzyk-com/webdav-uid-gid
 
 This Docker image sets up a WebDAV server with Nginx that runs with a specified UID and GID, ensuring that any files created by the server retain the correct ownership.
 
@@ -26,7 +26,7 @@ docker run -d \
   -e TZ=<your-timezone> \
   -v /path/to/your/data:/data \
   -p 80:80 \
-  jaaaco/webdav-uid-gid
+  ghcr.io/wietrzyk-com/webdav-uid-gid:latest
 ```
 
 ### Environment Variables
@@ -74,7 +74,7 @@ spec:
           persistentVolumeClaim:
             claimName: <your-pvc-claim-name>
       containers:
-        - image: jaaaco/webdav-uid-gid
+        - image: ghcr.io/wietrzyk-com/webdav-uid-gid:latest
           name: webdav
           volumeMounts:
             - name: <your-volume-name>
