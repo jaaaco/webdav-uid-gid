@@ -25,8 +25,8 @@ RUN echo 'server { \
 }' > /etc/nginx/sites-available/default
 
 # Environment variables
-ENV USERNAME=wlv
-ENV PASSWORD=Icai6xed
+ENV USERNAME=username
+ENV PASSWORD=password
 ENV UID=33
 ENV GID=33
 
