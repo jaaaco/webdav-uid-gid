@@ -31,8 +31,9 @@ ENV UID=33
 ENV GID=33
 
 # Entry point to run nginx
-CMD if ! id -u $USERNAME &>/dev/null; then \
-      useradd -u $UID -g $GID -d /data $USERNAME && \
+CMD if ! getent passwd $UID; then \
+      groupadd -g $GID webdavgroup && \
+      useradd -u $UID -g webdavgroup -d /data $USERNAME && \
       echo "$USERNAME:$PASSWORD" | chpasswd && \
       htpasswd -cb /etc/nginx/webdav/webdav.passwd $USERNAME $PASSWORD; \
     fi && \
