@@ -1,6 +1,3 @@
-
-# wietrzyk-com/webdav-uid-gid
-
 This Docker image sets up a WebDAV server with Nginx that runs with a specified UID and GID, ensuring that any files created by the server retain the correct ownership.
 
 ## Features
