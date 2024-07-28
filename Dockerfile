@@ -25,14 +25,16 @@ RUN echo 'server { \
 }' > /etc/nginx/sites-available/default
 
 # Environment variables
-ENV USERNAME=username
-ENV PASSWORD=password
+ENV USERNAME=wlv
+ENV PASSWORD=Icai6xed
 ENV UID=33
 ENV GID=33
 
 # Entry point to run nginx
-CMD useradd -u $UID -g $GID -d /data $USERNAME && \
-    echo "$USERNAME:$PASSWORD" | chpasswd && \
-    htpasswd -cb /etc/nginx/webdav/webdav.passwd $USERNAME $PASSWORD && \
+CMD if ! id -u $USERNAME &>/dev/null; then \
+      useradd -u $UID -g $GID -d /data $USERNAME && \
+      echo "$USERNAME:$PASSWORD" | chpasswd && \
+      htpasswd -cb /etc/nginx/webdav/webdav.passwd $USERNAME $PASSWORD; \
+    fi && \
     chown -R $UID:$GID /data && \
     exec gosu $UID:$GID nginx -g "daemon off;"
