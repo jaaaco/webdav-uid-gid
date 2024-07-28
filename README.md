@@ -23,7 +23,7 @@ docker run -d \
   -e TZ=<your-timezone> \
   -v /path/to/your/data:/data \
   -p 80:80 \
-  ghcr.io/wietrzyk-com/webdav-uid-gid:latest
+  jaaaco/webdav-uid-gid:latest
 ```
 
 ### Environment Variables
@@ -71,7 +71,7 @@ spec:
           persistentVolumeClaim:
             claimName: <your-pvc-claim-name>
       containers:
-        - image: ghcr.io/wietrzyk-com/webdav-uid-gid:latest
+        - image: jaaaco/webdav-uid-gid:latest
           name: webdav
           volumeMounts:
             - name: <your-volume-name>
